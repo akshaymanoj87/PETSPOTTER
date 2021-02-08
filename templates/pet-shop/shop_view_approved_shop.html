@@ -1,0 +1,73 @@
+{% extends 'admin/headerfooter.html'%}
+{% block content %}
+
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+ 
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+<!-- <link rel="stylesheet" type="text/css" href="/menubar/"> -->
+  <!-- Content Wrapper. Contains page content -->
+
+ <div class="content-wrapper">
+
+    <section class="content">
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Shop List</h3>
+{{data}}
+              <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              {% csrf_token %}
+              <table class="table table-hover">
+              <tr>
+                  <th>Name</th>
+                  <th>company</th>
+                  <th>Address</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>Facility</th>
+                  <th>Images</th>
+                
+              
+                </tr>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          
+              {% for x in db %}
+              <tr>
+          
+              <td>{{x.name}}</td>        
+              <td>{{x.Company}}</td>
+              <td>{{x.Address}}</td>
+              <td>{{x.Email}}</td>
+              <td>{{x.Mobile}}</td>
+              <td>{{x.Facility}}</td>
+              <td><img src="{{x.Image.url}}" width="25px" height="25px"></td>              
+            
+             </tr>
+             {% endfor %}
+      
+            
+          </table>
+        </div>    
+          </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,112 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>VETERINARIANS</h2>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-100 pb-100 gray-bg">
+
+            <div class="container">
+                   
+
+                        <div class="grid-list-product-wrapper">
+                            <div class="product-view product-grid">
+                                <div class="row">
+                                    {% if vet %}
+                                     {% for x in vet %}
+                                    
+                                    <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6" style="background-color: white;">
+                                        <div class="product-wrapper mb-10">
+                                            <div class="product-img">
+                                                 <img src="{{x.regid.Image.url}}" alt="">
+                                               
+                                                <div class="product-action-wishlist">
+                                                    <a title="Wishlist" href="#">
+                                                        <i class="ti-heart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <h4><a href="#">Name&nbsp;&nbsp;:&nbsp;&nbsp;{{x.regid.name}}</a></h4>
+       
+                                                <div class="product-price">
+                                                    <span class="new">Qualification&nbsp;&nbsp;:&nbsp;&nbsp;{{x.qualification}} </span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div>
+                                                
+                                                <div class="product-price">
+                                                    <span class="new">Experience&nbsp;&nbsp;:&nbsp;&nbsp;{{x.experience}}&nbsp;&nbsp;year(s) </span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div>
+                                                 <div class="product-price">
+                                                    <span class="new">Days&nbsp;&nbsp;:&nbsp;&nbsp;{{x.days}}</span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div> <div class="product-price">
+                                                    <span class="new">Time&nbsp;&nbsp;:&nbsp;&nbsp;{{x.time}}</span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div>
+                                                <div class="product-price">
+                                                    <span class="new">Clinic/Place&nbsp;&nbsp;:&nbsp;&nbsp;{{x.clinic}}</span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div>
+
+                                                <div class="product-price">
+                                                    <span class="new">Residential Address&nbsp;&nbsp;:&nbsp;&nbsp;{{x.regid.address}} </span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div>
+                                                  <div class="product-price">
+                                                    <span class="new">Contact&nbsp;&nbsp;:&nbsp;&nbsp;{{x.regid.phone}} </span>
+                                                  <!--   <span class="old">&#8377;50.00</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="product-list-content">
+                                                
+                                                <div class="product-list-action">
+                                                    <div class="product-list-action-left">
+                                                        <a class="addtocart-btn" title="Add to cart" href="#"><i class="ion-bag"></i> Add to cart</a>
+                                                    </div>
+                                                    <div class="product-list-action-right">
+                                                        <a title="Wishlist" href="#"><i class="ti-heart"></i></a>
+                                                        <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#"><i class="ti-plus"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                           {% endfor %}
+                           {% else %}
+                           <h6>No veterinarians </h6>
+                              {% endif %}      
+                                </div>
+                                <div class="pagination-style text-center mt-10">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="icon-arrow-left"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a class="active" href="#"><i class="icon-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+    
+
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endblock %}

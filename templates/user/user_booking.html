@@ -1,0 +1,105 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+ 
+                    <h2>BOOK NOW</h2>
+
+                   
+                </div>
+            </div>
+        </div>
+                  
+<div class="login-register-area pt-95 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                           
+                            <div class="tab-content">
+                                
+                                <div id="lg1" class="tab-pane active">
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                  {% for x in shop %}
+                                          <form action="/user_update_profile/?id={{x.id}}" method="post">
+                                            {% csrf_token %} 
+                                            <div>
+                                                 <label><b>Prodct Name</b></label>
+                                                <input type="text" name="address" value="{{x.name}}" placeholder="name">
+                                            </div>
+
+                                            <div>
+                                                 <label><b>Category</b></label>
+                                                <input type="text" name="Category" value="{{x.Category}}" placeholder="Category">
+                                            </div>
+
+
+                                 {% endfor %}
+                                {% for x in user %}
+                                          <div>
+                                               <label><b>Name</b></label>
+                                                <input type="text" name="name"value="{{x.name}}" placeholder="Username">
+                                              </div>
+                                            
+                                                <div>
+                                                   <label><b>Email</b></label>
+                                                <input name="email" value="{{x.email}}" placeholder="Email" >
+                                              </div>
+                                              <div>
+                                                 <label><b>Address</b></label>
+                                                <input type="text" name="address" value="{{x.address}}" placeholder="Address">
+                                              </div>
+                                              <div>
+                                                 <label><b>Number</b></label>
+                                                <input type="text" name="number" value="{{x.phone}}" placeholder="Mobile">
+                                              </div>
+
+                                              <div>
+                                                 <label><b>Services</b></label>
+                                                <input type="text" name="services" value="{{x.services}}" placeholder="services">
+                                              </div>
+
+                                              <div>
+                                                 <label><b>Date</b></label>
+                                                <input type="date" id="date" name="date" value="" class="inputtext form-control" placeholder="select date">
+                                              </div>
+
+
+                                              <div>
+                                                 <label><b>Time</b></label>
+                                                <br>
+                                                Morning(6:00 - 12:00):<input type="checkbox" id="name" name="time[]" value="morning" class="inputtext form-control" >
+                                              </div>
+
+                                              <div>
+                                                <div class="form-group">
+                                                <br><br>
+                                                Evening(6:00 - 12:00):<input type="checkbox" id="name" name="time[]" value="Evening" class="inputtext form-control" >
+                                                </div>
+                                              </div>
+
+
+                                              
+                                                <div class="button-box">
+                                                    <button type="submit"><span>SUBMIT</span></button>
+                                                </div>
+                                            </form>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+<script type="text/javascript">
+    date.min = new Date().toISOString().split("T")[0];
+ 
+</script>
+
+		{% endblock %}

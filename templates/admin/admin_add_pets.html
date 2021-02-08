@@ -1,0 +1,156 @@
+{% extends 'admin/headerfooter.html'%}
+{% block content %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+
+
+<div class="wrapper">
+
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1><br>
+        Add Pets Details
+       
+      </h1>
+   
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- SELECT2 EXAMPLE -->
+      <div class="box box-default">
+        <!-- <div class="box-header with-border">
+          <h3 class="box-title">Add shop Details</h3>
+
+         
+        </div> -->
+
+        <p style="color: red; text-align: center; font-size: 20pt;">{{msg}}</p>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+             <form action="/add_pets/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+
+
+              <div class="col-md-12">
+              <div class="form-group">
+                <label>Category</label>
+                  <label for="inputStatus">Category</label>
+                  <select name="type" required class="form-control">
+                  <option selected disabled>Select one</option>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                  <option value="bird">Bird</option>
+                  <option value="fish">fish</option>
+                </select>
+              </div>          
+            </div>
+
+                
+              <div class="col-md-12">
+              <div class="form-group">
+                <label>Name</label>
+                 <input type="text" name="name" class="form-control" placeholder="Enter name" required=""> 
+              </div>          
+            </div>
+             
+
+
+              <div class="col-md-12">
+              <div class="form-group">
+                <label>Breed&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                 <input type="checkbox" name="breed" value="Male" />Male &nbsp;
+                 <input type="checkbox" name="breed" value="Female" />Female &nbsp;
+              </div>          
+            </div>
+
+
+
+            
+              <div class="col-md-12">
+              <div class="form-group">
+                <label>Age</label>
+                 <input type="text" name="age" class="form-control" placeholder="Enter Location" required=""> 
+              </div>          
+            </div>
+
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Colour</label>
+                 <input type="text" name="colour" class="form-control" placeholder="Enter Location" required=""> 
+              </div>          
+            </div>
+
+
+              <div class="col-md-12">
+              <div class="form-group">
+                <label>size</label>
+                 <input type="text" name="size" class="form-control" placeholder="Enter Location" required=""> 
+              </div>          
+            </div>
+
+
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Vaccination</label>
+                 <textarea name="vacci" class="form-control" rows="4" required=""></textarea>
+              </div>
+            
+            </div>
+            </div>
+                 <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                 <textarea name="desc" class="form-control" rows="4" required=""></textarea>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Price</label>
+                 <input type="tel" name="price"  pattern="{0-9}" class="form-control" required=""> 
+              </div>          
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Available quantity</label>
+                 <input type="text" name="aqty" class="form-control" placeholder="available quantity" required=""> 
+              </div>          
+            </div>
+
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Image</label>
+                  <input type="file" name="image" class="form-control" required=""> 
+              </div>
+            </div>
+             <div class="col-md-12">
+              <div class="box-footer" style="text-align: center;">
+                <button type="submit"  class="btn btn-success" class="btn btn-primary btn-block btn-flat">Add</button>
+              </div>
+            </div>
+ </form>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+

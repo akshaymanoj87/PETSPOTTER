@@ -1,0 +1,66 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+ 
+                    <h2>My Profile</h2>
+
+                   
+                </div>
+            </div>
+        </div>
+                  
+<div class="login-register-area pt-95 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                           
+                            <div class="tab-content">
+                                
+                                <div id="lg1" class="tab-pane active">
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                          {% for x in db %}
+                                            <form action="/user_view_update_profile/" method="post">
+                                              <div>
+                    {% csrf_token %}            <label><b>Name</b></label>
+                                                <input type="text" name="name"value="{{x.name}}" placeholder="Username">
+                                              </div>
+                                              <div>
+                                                 <label><b>Password</b></label>
+                                                <input type="password" name="password" value="{{x.password}}"  placeholder="Password">
+                                              </div>
+                                                <div class="form-group has-feedback">
+                                                   <label><b>Conf Password</b></label>
+                                                    <input type="password" name="cpassword" value="{{x.password}}" class="form-control" placeholder="Retype password">
+                                                    <!-- <span class="glyphicon glyphicon-log-in form-control-feedback"></span> -->
+                                                </div>
+                                                
+                                              <div>
+                                                 <label><b>Address</b></label>
+                                                <input type="text" name="address" value="{{x.address}}" placeholder="Address">
+                                              </div>
+                                              <div>
+                                                 <label><b>Phone Number</b></label>
+                                                <input type="text" name="number" value="{{x.phone}}" placeholder="Mobile">
+                                              </div>
+                                                <div class="button-box">
+                                                    <button type="submit"><span>UPDATE</span></button>
+                                                </div>
+                                            </form>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+
+		{% endblock %}

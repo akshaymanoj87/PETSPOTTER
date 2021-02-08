@@ -1,0 +1,66 @@
+{% extends 'pet-shop/headerfooter.html'%}
+{% block content %}
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+<!-- <link rel="stylesheet" type="text/css" href="/menubar/"> -->
+  <!-- Content Wrapper. Contains page content -->
+
+ <div class="content-wrapper">
+
+    <section class="content">
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">My Profile</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <!-- <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"> -->
+
+                  <div class="input-group-btn">
+                    <!-- <button type="submit" class="btn btn-default"><i></i> class="fa fa-search"></i></button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+      {% for x in data %}
+<form action="/shop_profile/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+            <input type="text" name="name" placeholder="Username" value="{{x.name}}" class="form-control"><br>
+                                               
+                                            
+                                                <input name="email" placeholder="Email" type="email" value="{{x.email}}" class="form-control"><br>
+                                                <input type="text" name="address" placeholder="Address" value="{{x.address}}" class="form-control"><br>
+                                                <input type="text" name="number" placeholder="Mobile" value="{{x.phone}}" class="form-control"><br>
+                                                <img src="{{x.Image.url}}" width="200">
+                                                Would you like to change image : 
+                                                 <input type="radio" name="imgupdate" value="Yes">Yes &nbsp;
+                    <input type="radio" name="imgupdate" value="No" checked>No &nbsp;
+                  <input type="file" name="image" value="000" accept="image/png, image/jpeg" class="form-control" onchange="previewFile()"><br>
+                                                <div class="button-box">
+                                                   <center> <input type="submit" class="btn btn-success" value="UPDATE">
+                                                    <br>
+                                                    <p style="color: :red;">{{msg}}</p>
+                                                   </center>
+                                                 </form>
+      {% endfor %}
+      <!--     
+        <tr>
+        <td>{{x.name}}</td> 
+         <td>{{x.email}}</td>
+         <td>{{x.password}}</td>
+         <td>{{x.address}}</td>
+         <td>{{x.phone}}</td>
+         <td><img src="{{x.image.url}}" width="25px" height="25px"></td>
+         <td><a href="/updateD/?rno={{x.id}}">update</a></td>
+        <td><a href="/delete/?rno={{x.id}}">Delete</a></td>
+        </tr> -->
+      </table>
+
+</div>
+</div>
+</section>
+ 
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'admin/headerfooter.html'%}
+{% block content %}
+
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+ 
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+<!-- <link rel="stylesheet" type="text/css" href="/menubar/"> -->
+  <!-- Content Wrapper. Contains page content -->
+
+ <div class="content-wrapper">
+
+    <section class="content">
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">User Payments</h3>
+{{data}}
+              <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              {% csrf_token %}
+              <table class="table table-hover">
+                  <tr>
+
+                     <th>User Name</th>
+                     <th>Date</th>
+                     <th>Amount</th>
+
+                  </tr>
+  {% for x in db %}
+                    <tr><br>
+                    <td>{{x.userid.name}}</td>
+                    <td>{{x.date}}
+                    <td>{{x.amount}}</td>
+  
+
+                   </tr>
+
+   
+  {% endfor %}
+
+  </table>
+
+        </div>  
+
+          </div>
+
+{% endblock %}
+
+

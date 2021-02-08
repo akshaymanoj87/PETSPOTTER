@@ -1,0 +1,152 @@
+{% extends 'admin/headerfooter.html'%}
+{% block content %}
+
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+ 
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+<!-- <link rel="stylesheet" type="text/css" href="/menubar/"> -->
+  <!-- Content Wrapper. Contains page content -->
+
+ <div class="content-wrapper">
+
+    <section class="content">
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Pet Spotter Users</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+            <tr>
+             
+              <th>Name</th>
+              <th>Address</th>
+              <th>Email</th>
+             <th>Contact</th>
+             <th>Action</th>
+            </tr>
+          
+            </div>
+            <!-- /.box-body -->
+          </div>
+          {% for x in db %}
+              <tr>
+          
+  <td>{{x.name}}</td>
+    <td>{{x.address}}</td>
+            <td>{{x.email}}</td>
+              <td>{{x.phone}}</td>
+                  <td>{{x.Action}}
+                   <a href="/admin_reject_user/?id={{x.id}}">Reject</a></td>
+                 
+            
+             </tr>
+            {% endfor %}
+          </table>
+        </div>    
+          </div>
+<!-- 
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Advanced Form Elements
+        <small>Preview</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">Advanced Elements</li>
+      </ol>
+    </section>
+
+        <div class="box-header with-border">
+          <h3 class="box-title">Add sports item</h3>
+
+         
+        </div>
+        <div class="box-body">
+          <div class="row">
+
+
+
+
+            <form action="/uploadgallery/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <label for="inputStatus">Name</label>
+      <input type="text" name="field" class="form-control" placeholder="Name of Turf"> 
+
+              </div>
+              <div class="form-group">
+                <label for="inputStatus">Category</label>
+                <select class="form-control custom-select" name="category">
+                  <option selected disabled>Select one</option>
+                  <option value="cricket">Cricket</option>
+                  <option value="football">Football</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Desc</label>
+                 <textarea name="desc" class="form-control" rows="4"></textarea>
+              </div>
+            </div>
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Price</label>
+                 <input type="text" name="inputlocation" class="form-control" placeholder="Name of Turf"> 
+              </div>          
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Quantity</label>
+                 <input type="text" name="mobile" class="form-control" placeholder="Name of Turf"> 
+              </div>          
+            </div>
+        
+            
+
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Image</label>
+                  <input type="file" name="image" class="form-control">
+              </div>
+             
+            </div>
+
+             <div class="col-md-12">
+              <div class="box-footer" style="text-align: center;">
+                 <button type="submit"  class="btn btn-success" class="btn btn-primary btn-block btn-flat">Add Item</button>
+              </div>
+           
+            </div>
+           
+ </form>
+
+
+
+
+
+ -->
+{% endblock %}
+
+

@@ -1,0 +1,249 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>ADOPT-DOGS</h2>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-100 pb-100 gray-bg">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-9">
+                        <div class="shop-topbar-wrapper">
+                            <div class="product-sorting-wrapper">
+                                <form action="/dogs/" method="post"  class="form-inline">
+                                        {% csrf_token %}
+                                    <div><select name="petname" required="true">
+                                        <option value="" disabled selected>Select Dog name</option>
+                                        {% for x in dog %}
+                                        <option value="{{x.name}}">{{x.name}}</option>
+                                        {% endfor %}
+                                    </select></div><div>
+                                    <input type="submit" value="Search" class="btn btn-success"></div>
+                                    </form>
+                            </div>
+                            <div class="grid-list-options">
+                                <ul class="view-mode">
+                                    <li class="active"><a href="#product-grid" data-view="product-grid"><i class="ti-layout-grid4-alt"></i></a></li>
+                                    <li><a href="#product-list" data-view="product-list"><i class="ti-align-justify"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid-list-product-wrapper">
+                            <div class="product-view product-grid">
+                                <div class="row">
+                                    {% if dog %}
+                                    {% for x in dog %}
+                                    <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
+                                        <div class="product-wrapper mb-10">
+                                            <div class="product-img">
+                                                <a href="/pets_details/?id={{x.id}}">
+                                                    <img src="{{x.Image.url}}" alt="">
+                                                </a>
+                                                <div class="product-action">
+                                                    <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                                        <i class="ti-plus"></i>
+                                                    </a>
+                                                    <a title="Add To Cart" href="#">
+                                                        <i class="ti-shopping-cart"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-wishlist">
+                                                    <a title="Wishlist" href="#">
+                                                        <i class="ti-heart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <h4><a href="/pets_details/">{{x.name}}</a></h4>
+    <h6>
+{% if x.rating == 0 %}
+Not Reviewed
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 2 and x.rating > 0.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    {% endif %}
+
+ {% if x.rating < 3 and x.rating > 1.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 4 and x.rating > 2.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 5 and x.rating > 3.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 6 and x.rating > 4.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+{% endif %}
+
+                                 </h6>
+                                                <div class="product-price">
+                                                    <span class="new">&#8377;{{x.Price}} </span>
+                                                   <!--  <span class="old">&#8377;50.00</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="product-list-content">
+                                                
+                                                
+                                                <div class="product-list-action">
+                                                   <!--  <div class="product-list-action-left">
+                                                        <a class="addtocart-btn" title="Add to cart" ref="/pets_addcart/?id={{x.id}}"><i class="ion-bag"></i> Add to cart</a>
+                                                    </div> -->
+                                                    <a class="addtocart-btn" title="Add to cart" ref="/pets_addcart/?id={{x.id}}"><button>Buy</button></a>
+                                                    
+                                                   <!--  <div class="product-list-action-right">
+                                                        <a title="Wishlist" href="#"><i class="ti-heart"></i></a>
+                                                        <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#"><i class="ti-plus"></i></a>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                   {% endfor %} 
+                                    {% else %}
+                                NO DOGS FOUND
+                                {% endif %}
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="pagination-style text-center mt-10">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="icon-arrow-left"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a class="active" href="#"><i class="icon-arrow-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="shop-sidebar">
+                            <!-- <div class="shop-widget">
+                                <h4 class="shop-sidebar-title">Search Products</h4>
+                                <div class="shop-search mt-25 mb-50">
+                                    <form class="shop-search-form">
+                                        <input type="text" placeholder="Find a product">
+                                        <button type="submit">
+                                            <i class="icon-magnifier"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> -->
+                            <!-- <div class="shop-widget">
+                                <h4 class="shop-sidebar-title">Filter By Price</h4>
+                                 <div class="price_filter mt-25">
+                                    <div id="slider-range"></div>
+                                    <div class="price_slider_amount">
+                                        <div class="label-input">
+                                            <label>price : </label>
+                                            <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                        </div>
+                                        <button type="button">Filter</button> 
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="shop-widget mt-50">
+                                <h4 class="shop-sidebar-title">Food Category </h4>
+                                 <div class="shop-list-style mt-20">
+                                    <ul>
+                                        <li><a href="#">Canned Food</a></li>
+                                        <li><a href="#">Dry Food</a></li>
+                                        <li><a href="#">Food Pouches</a></li>
+                                        <li><a href="#">Food Toppers</a></li>
+                                        <li><a href="#">Fresh Food</a></li>
+                                        <li><a href="#">Frozen Food</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="shop-widget mt-50">
+                                <h4 class="shop-sidebar-title">Top Brands </h4>
+                                 <div class="shop-list-style mt-20">
+                                    <ul>
+                                        <li><a href="#">Authority</a></li>
+                                        <li><a href="#">AvoDerm Natural</a></li>
+                                        <li><a href="#">Bil-Jac</a></li>
+                                        <li><a href="#">Blue Buffalo</a></li>
+                                        <li><a href="#">Castor & Pollux</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="shop-widget mt-50">
+                                <h4 class="shop-sidebar-title">Health Consideration </h4>
+                                 <div class="shop-list-style mt-20">
+                                    <ul>
+                                        <li><a href="#">Bone Development <span>18</span></a></li>
+                                        <li><a href="#">Digestive Care <span>22</span></a></li>
+                                        <li><a href="#">General Health <span>19</span></a></li>
+                                        <li><a href="#">Hip & Joint  <span>41</span></a></li>
+                                        <li><a href="#">Immune System  <span>22</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="shop-widget mt-50">
+                                <h4 class="shop-sidebar-title">Nutritional Option </h4>
+                                 <div class="shop-list-style mt-20">
+                                    <ul>
+                                        <li><a href="#">Grain Free  <span>18</span></a></li>
+                                        <li><a href="#">Natural <span>22</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

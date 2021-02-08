@@ -1,0 +1,265 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>Food Details</h2>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li class="active">Product Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        {% for x in db %}
+        <form action="/food_addcart/?id={{x.id}}" method="POST" onsubmit="return checkqty()">
+            {% csrf_token %}
+            <input type="text" name="shop" value="{{x.fid.id}}" hidden>
+        <div class="shop-area pt-95 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product-details-img">
+                            <img id="zoompro" src="{{x.Image.url}}" data-zoom-image="{{x.Image.url}}" alt="zoom"/>
+                            <div id="gallery" class="mt-12 product-dec-slider owl-carousel">
+                                <a data-image="{{x.Image.url}}" data-zoom-image="{{x.Image.url}}">
+                                    <img src="{{x.Image.url}}" alt="">
+                                </a>
+                                
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product-details-content">
+                            <h2>{{x.name}}</h2>
+                            <div class="product-rating">
+                                 <h6>
+{% if x.rating == 0 %}
+Not Reviewed
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 2 and x.rating > 0.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    {% endif %}
+
+ {% if x.rating < 3 and x.rating > 1.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 4 and x.rating > 2.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 5 and x.rating > 3.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+{% endif %}
+
+ {% if x.rating < 6 and x.rating > 4.9 %}
+ <span style="color: red;">{{x.rating}}</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+{% endif %}
+
+                                 </h6>
+                            </div>
+                            <div class="product-price">
+                                <span class="new">&#8377;{{x.Price}} </span>
+                                
+                            </div>
+                           
+                           <div class="product-details-style shorting-style mt-30">
+                           <label>Description  : 
+                                <span>{{x.Description}}</span></label>
+                               <br> <label>Quantity&nbsp;:<span>{{x.quantity}}</span></label>
+                            </div>
+                             <div class="in-stock">
+                                <span><i class="ion-android-checkbox-outline"></i>{{x.status}}&nbsp;&nbsp;<i id="avqty" style="color: red; font-size: 15pt;">{{x.availableqty}}</i>&nbsp;&nbsp;Nos</span>
+                            </div>
+                            <div class="quality-wrapper mt-30 product-quantity">
+                                <label>Qty&nbsp;</label>
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" type="text" name="qty" id="qty" value="1">
+                                </div>
+                            </div>
+
+                            <div class="product-list-action">
+                                <div class="product-list-action-left">
+                                    <a class="addtocart-btn" href="/food_addcart/?id={{x.id}}" title="Add to cart">
+                                        <i class="ion-bag"></i>
+                                       <input type="submit" value="Add to cart" style="background-color: transparent; color: white; border: none;" >
+                                    </a>
+                                </div>
+                                <div class="product-list-action-right">
+                                    <a href="#" title="Wishlist">
+                                        <i class="ti-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                    </form>
+                            <div class="social-icon mt-30">
+                                <ul>
+                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-instagram"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-skype"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <!-- <div class="description-review-area pb-100">
+            <div class="container">
+                <div class="description-review-wrapper gray-bg pt-40">
+                    <div class="description-review-topbar nav text-center">
+                        <a class="active" data-toggle="tab" href="#des-details1">DESCRIPTION</a>
+                        <a data-toggle="tab" href="#des-details2">MORE INFORMATION</a>
+                        <a data-toggle="tab" href="#des-details3">REVIEWS (2)</a>
+                    </div>
+                    <div class="tab-content description-review-bottom">
+                        <div id="des-details1" class="tab-pane active">
+                            <div class="product-description-wrapper">
+                                <p>This stewpot is part of the Scanpan Classic cookware range, which boasts GreenTek non-stick coating which is 100% PFOA free, meaning it's safer for your family and the environment. The heavy-duty, pressure-cast aluminum body has an extra-thick base for quick, even heating and it is compatible with all cooking surfaces (excluding induction). The extraordinarily hard exterior surface is a combination of ceramic and titanium nonstick cooking surface which is impossible to scrape away, even with metal utensils. Patented spring-lock handle stays cool during normal stove top use and the stewpot is also oven safe from up to 260°C. It's also dishwasher safe for easy cleanup. </p>
+                                <p>Scanpan is designed and manufactured in Denmark and offers a lifetime warranty.</p>
+                                <ul>
+                                    <li>Key Features:</li>
+                                    <li>Heavy duty, pressure cast aluminium with extra thick base for quick heat up</li>
+                                    <li>Ceramic titanium surface with PFOA-free GreenTek non-stick coating</li>
+                                    <li>Fat-free frying, metal utensils safe</li>
+                                    <li>Suitable for all stove tops, except induction</li>
+                                    <li>Guaranteed not to warp</li>
+                                    <li>Fast and even heat distribution</li>
+                                    <li>Ovenproof up to 260°C</li>
+                                    <li>Dishwasher safe - but not recommended</li>
+                                    <li>Designed and manufactured in Denmark</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="des-details2" class="tab-pane">
+                            <div class="product-anotherinfo-wrapper">
+                                <ul>
+                                    <li><span>name &nbsp:</span> {{x.Pname}}</li>
+                                    <li><span>Price &nbsp:</span> {{x.Price}}</li>
+                                    <li><span>Status&nbsp:</span> {{x.status}} </li>
+                                    
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="des-details3" class="tab-pane">
+                            <div class="rattings-wrapper">
+                                <div class="sin-rattings">
+                                    <div class="star-author-all">
+                                        <div class="product-rating f-left">
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <span>(5)</span>
+                                        </div>
+                                        <div class="ratting-author f-right">
+                                            <h3>tayeb rayed</h3>
+                                            <span>12:24</span>
+                                            <span>9 March 2018</span>
+                                        </div>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost.</p>
+                                </div>
+                                <div class="sin-rattings">
+                                    <div class="star-author-all">
+                                        <div class="product-rating f-left">
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star"></i>
+                                            <span>(4)</span>
+                                        </div>
+                                        <div class="ratting-author f-right">
+                                            <h3>farhana shuvo</h3>
+                                            <span>12:24</span>
+                                            <span>9 March 2018</span>
+                                        </div>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost.</p>
+                                </div>
+                            </div>
+                            <div class="ratting-form-wrapper">
+                                <h3>Add your Comments :</h3>
+                                <div class="ratting-form">
+                                    <form action="#">
+                                        <div class="star-box">
+                                            <h2>Rating:</h2>
+                                                <div class="product-rating">
+                                                <i class="ti-star theme-color"></i>
+                                                <i class="ti-star theme-color"></i>
+                                                <i class="ti-star theme-color"></i>
+                                                <i class="ti-star"></i>
+                                                <i class="ti-star"></i>
+                                                <span>(3)</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="rating-form-style mb-20">
+                                                    <input placeholder="Name" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="rating-form-style mb-20">
+                                                    <input placeholder="Email" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="rating-form-style form-submit">
+                                                    <textarea name="message" placeholder="Message"></textarea>
+                                                    <input type="submit" value="add review">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+     
+        {% endfor %}
+        {% endblock %}

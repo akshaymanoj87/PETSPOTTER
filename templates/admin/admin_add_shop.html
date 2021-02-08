@@ -1,0 +1,179 @@
+{% extends 'admin/headerfooter.html'%}
+{% block content %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+
+
+<div class="wrapper">
+
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1><br>
+        Add shop Details
+       
+      </h1>
+   
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- SELECT2 EXAMPLE -->
+      <div class="box box-default">
+        <!-- <div class="box-header with-border">
+          <h3 class="box-title">Add shop Details</h3>
+
+         
+        </div> -->
+
+        <div style="{color: blue}">{{msg}}</div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+             <form action="/add_shop/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <label for="inputStatus">Name</label>
+                  <input type="text" name="fname" class="form-control" placeholder="Name of Head" required=""> 
+              </div>
+
+
+            <div class="form-group">
+
+                <label for="inputStatus">Company</label>
+                  <input type="text" name="company" class="form-control" placeholder="shop name" required=""> 
+
+              </div>
+
+            
+
+              <!-- /.form-group -->
+              <!-- <div class="form-group">
+                <label for="inputStatus">company</label>
+                <select class="form-control custom-select" name="category" required="">
+                  <option selected disabled>Select one</option>
+                  <option value="cricket">Cricket</option>
+                  <option value="football">Football</option>
+                  <option value="Hockey">Hockey</option>
+
+                  <option value="Tennis">Tennis</option>
+
+                  <option value="Rugby">Rugby</option>
+
+                  <option value="Golf">Golf</option>
+
+                  <option value="Batminton">Batminton</option>
+
+                </select>
+              </div> -->
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Address</label>
+                 <textarea name="address" class="form-control" rows="4" required=""></textarea>
+              </div>
+            
+            </div>
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Location</label>
+                 <input type="text" name="location" class="form-control" placeholder="Enter Location" required=""> 
+              </div>          
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Mobile</label>
+                 <input type="tel" name="mobile" pattern="[0-9]{10}" title="Must be a valid Number 10 digit"  class="form-control" placeholder="Enter Mobile Number" required=""> 
+              </div>          
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Email</label>
+                 <input type="email" name="email" class="form-control" placeholder="Enter Email" required=" "> 
+              </div>          
+            </div>
+                 <div class="col-md-12">
+              <div class="form-group">
+                <label>Facility</label>
+                 <textarea name="fac" class="form-control" rows="4" required=""></textarea>
+              </div>
+            
+            </div>
+
+
+            <div class="col-md-12">
+      
+
+
+<!-- 
+              <div class="form-group">
+                <label>Price</label>
+                 <input type="tel" name="price"  pattern="{0-9}" class="form-control" required=""> 
+              </div>          
+            </div>
+ -->
+        
+              <div class="form-group">
+                <label>status</label>
+                 <input type="text" name="status" class="form-control" rows="4" required="">
+              </div>
+            
+            </div>
+
+            
+
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Image</label>
+                  <input type="file" name="image" class="form-control" required=""> 
+              </div>
+              <!-- /.form-group -->
+              
+              <!-- /.form-group -->
+            </div>
+
+             <div class="col-md-12">
+              <div class="box-footer" style="text-align: center;">
+                <button type="submit"  class="btn btn-success" class="btn btn-primary btn-block btn-flat">Add</button>
+              </div>
+              <!-- /.form-group -->
+              
+              <!-- /.form-group -->
+            </div>
+           
+ </form>
+          </div>
+          <!-- /.row -->
+        </div>
+        
+      </div>
+      <!-- /.box -->
+
+      <div class="row">
+        <div class="col-md-6">
+
+         
+
+
+        </div>
+       
+      </div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
+
+

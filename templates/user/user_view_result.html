@@ -1,0 +1,52 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+	<!-- ABOUT SECTION -->
+	<div id="services" class="section services">
+		<div class="container">
+			<!--  -->
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<div class="page-title">
+						<h2 class="lead">View Result</h2>
+						<!-- <p class="sublead">This template is designed with a unique and simple, so that it can promote and laundry business solution.</p> -->
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="row pbot-main">
+			
+				<div class="col-sm-12 col-md-12">
+			<table border="3" width="600" height="300" align="center">
+		<tr>
+			<th>Shop Name</th>
+			<th>Services</th>
+			<th>User Name</th>
+			<th>Amount</th>
+		</tr>
+	{% for x in db %}
+	<tr><br>
+	<td>{{x.shopsid.name}}</td>
+	<td>{{x.services}}
+	<td>{{x.userid.name}}</td>
+	<td>{{x.amount}}</td>
+	<td>{{x.status}}</td>
+	
+
+	</tr>
+	{% endfor %}
+	</table>
+	
+				</div>
+				
+			
+				
+				
+			</div>
+			
+			
+			
+		</div>
+	</div>
+	
+	

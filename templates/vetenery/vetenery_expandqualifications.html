@@ -1,0 +1,135 @@
+{% extends 'vetenery/headerfooter.html'%}
+{% block content %}
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 />
+<body class="hold-transition skin-blue sidebar-mini">
+
+
+
+<div class="wrapper">
+
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1><br>
+        Qualification & Experience Details
+       
+      </h1>
+   
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- SELECT2 EXAMPLE -->
+      <div class="box box-default">
+        <!-- <div class="box-header with-border">
+          <h3 class="box-title">Add shop Details</h3>
+
+         
+        </div> -->
+
+        <div style="{color: blue}">{{msg}}</div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+        {% for x in data %}
+            
+             <form action="/qualexp_vetenery/?id={{x.id}}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+            <div class="col-md-12">
+              <div class="form-group">
+
+                
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Qualification</label>
+                 <input type="text" name="qualification" class="form-control" placeholder="name of pet" value="{{x.qualification}}" required=""> 
+              </div>          
+            </div>
+             
+              <div class="col-md-12">
+              <div class="form-group">
+                <label>Experience</label>
+                 <input type="text" name="experience" value="{{x.experience}}" class="form-control" required=""> 
+              </div>          
+            </div>
+
+
+
+       
+               
+              
+<!-- <img src="" height="200" alt="Image preview...">
+
+
+<script type="text/javascript">
+  function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script> -->
+                </div>
+              <!-- /.form-group -->
+              
+              <!-- /.form-group -->
+            </div>
+
+
+
+{% endfor %}
+            
+
+             <div class="col-md-12">
+              <div class="box-footer" style="text-align: center;">
+                <button type="submit"  class="btn btn-success" class="btn btn-primary btn-block btn-flat">UPATE</button>
+              </div>
+              <!-- /.form-group -->
+              
+  
+            </div>
+           
+ </form>
+          </div>
+          <!-- /.row -->
+        </div>
+        
+      </div>
+      <!-- /.box -->
+
+      <div class="row">
+        <div class="col-md-6">
+
+         
+
+
+        </div>
+       
+      </div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
+
+

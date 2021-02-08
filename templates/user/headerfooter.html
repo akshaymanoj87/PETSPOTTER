@@ -1,0 +1,365 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>PET-SPOTTER user</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="/static/assets/img/favicon.png">
+        <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/assets/css/animate.css">
+        <link rel="stylesheet" href="/static/assets/css/simple-line-icons.css">
+        <link rel="stylesheet" href="/static/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/static/assets/css/slick.css">
+        <link rel="stylesheet" href="/static/assets/css/meanmenu.min.css">
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+        <link rel="stylesheet" href="/static/assets/css/responsive.css">
+        <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script>
+            function checkqty() {
+            var x = document.getElementById("qty").value;
+            var y = document.getElementById("avqty").innerHTML;
+            var a=parseInt(x, 10);
+            var b=parseInt(y, 10);
+            if (a>b){
+                alert('Quantity exceeds '+ b + " is maximum available quantity");
+                return false;
+            }
+            }
+        </script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+
+
+    </head>
+    <body>
+        <header class="header-area">
+            
+            <div class="header-bottom transparent-bar">
+                <div class="container">
+                    <div class="row">
+                        <!-- <div class="col-xl-2 col-lg-3 col-md-8 col-sm-4 col-5"> -->
+                            <div class="logo pt-39">
+                                <a href="#"><img alt="" src="/static/assets/img/logo/logo1.png" width="200"></a>
+                            </div>
+                        <!-- </div> -->
+                        <div class="col-xl-9 col-lg-9 d-none d-lg-block">
+                            <div class="main-menu text-center">
+                                <nav>
+                                    <ul>
+                                    <a href="/">HOME</a>
+
+                                    <li><a href="#">Pets</a>
+                                            <ul class="submenu">
+                                                <li>
+                                                    <a href="/cats/">Cats</a>
+                                                </li>
+                                                 <li>
+                                                    <a href="/dogs/">Dogs</a>
+                                                </li>
+                                                 <li>
+                                                    <a href="/birds/">Birds</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/fishes/">Fishes</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="#">PETS-Food</a>
+                                            <ul class="submenu">
+                                                        <li><a href="/cat_food/">CAT FOOD</li>
+                                                        <li><a href="/dog_food/">DOG FOOD</li>
+                                                        <li><a href="/bird_food/">BIRD FOOD</li>
+                                                        <li><a href="/fish_food/">FISH FOOD</li>
+                                                <li>
+                                                    <ul>
+                                                        <li><a href="/food/"><img alt="" src="/static/assets/img/banner/menu-img-4.jpg"></a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/tutorials/">TUTORIAL</a></li>
+                                        <!-- <li><a href="/tutorials/">TUTORIALS</a></li> -->
+                                        
+                                        <li><a href="/about/">ABOUT</a></li>
+                                        <li><a href="/contact/">CONTACT US</a></li>
+                                        <li><a href="/view_veterinerians/">VETERINARIAN</a>
+                                            
+                                        </li>
+                                     {% if request.session.myid %}
+                                       
+                                        <li><a href="/logout/">Logout</a></li>
+                                        <li><a href="/user_profile/"><i class="icon-user icons"></i></a></li>
+                            
+                                   
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-1 col-lg-1 col-md-5 col-sm-5 col-7">
+                            <div class="search-login-cart-wrapper">
+                            {% else %}
+                                <div class="header-search same-style">
+                                    <button class="search-toggle">
+                                        <i class="icon-magnifier s-open"></i>
+                                        <i class="ti-close s-close"></i>
+                                    </button>
+                                    <div class="search-content">
+                                        <form action="#">
+                                            <input type="text" placeholder="Search">
+                                            <button>
+                                                <i class="icon-magnifier"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="header-login same-style">
+                                    
+                                       <li class="dropdown">
+                                            <a href="#" data-toggle="dropdown"><i class="icon-user icons" style="font-size: 25px" ></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/login-register/"></i><center>user</center></a></li>
+                                                <li><a href="/shop_login_register/"></i><center>shop</center></a></li>
+                                                <li><a href="/vetenery_login_register/"></i><center>Veterinarian</center></a></li>
+                                            </ul>
+                                        </li>
+                                
+                                {% endif %}
+                                {% if request.session.myid %}
+                                <div class="header-cart same-style">
+                                   <button class="icon-cart">
+                                       <i class="icon-handbag"></i>
+                                        <span class="count-style">{{mc}}</span>
+                                    </button>
+                                    <div class="shopping-cart-content">
+                                    <!-- 
+                                        <div class="shopping-cart-total">
+                                            <a href="/cart/"> <h4>My Cart</h4></a>
+                                            <a href="/orders/"> <h4>My Orders</h4></a>
+                                        </div> -->
+                                        <div class="shopping-cart-btn">
+                                            <a href="/cart/">view cart</a>
+                                            <a href="/orders/">My Orders</a>
+                                            <a href="/mypayments/">My Payments</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                 </ul>
+                            </div>
+                        </div> </div>
+                        <div class="mobile-menu-area electro-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
+                            <div class="mobile-menu">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+
+{% block content %}
+
+
+
+{% endblock %}
+
+
+
+
+<footer class="footer-area">
+            <div class="footer-top pt-80 pb-50 gray-bg-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30">
+                                <div class="footer-info-wrapper">
+                                    <div class="footer-logo">
+                                        <a href="#">
+                                            <img src="/static/assets/img/logo/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, co adipisi elit, sed eiusmod tempor incididunt ut labore et dolore</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-instagram"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-skype"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                                        <li><a href="/login/"><i class="icon-user icons"></i></a></li>
+                                
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30 pl-50">
+                                <h4 class="footer-title">USEFUL LINKS</h4>
+                                <div class="footer-content">
+                                    <ul>
+                                        <li><a href="#">Help & Contact Us</a></li>
+                                        <li><a href="#">Returns & Refunds</a></li>
+                                        <li><a href="#">Online Stores</a></li>
+                                        <li><a href="#">Terms & Conditions</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30 pl-70">
+                                <h4 class="footer-title">HELP</h4>
+                                <div class="footer-content">
+                                    <ul>
+                                        <li><a href="#">Faq's </a></li>
+                                        <li><a href="#">Pricing Plans</a></li>
+                                        <li><a href="#">Order Traking</a></li>
+                                        <li><a href="#">Returns </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                            <div class="footer-widget">
+                               
+                                <div class="payment-img">
+                                    <a href="index.html">
+                                        <img src="/static/assets/img/logo/logo.png" alt=""><br><br>
+                                        <img src="/static/assets/img/icon-img/payment.png" alt=""><br><br>
+                                        <img src="/static/assets/img/logo/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom gray-bg-3 pt-17 pb-15">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="copyright text-center">
+                                <p>Copyright © <a href="#">PetSpotter.</a> All Right Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- modal -->
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span class="ti-close" aria-hidden="true"></span>
+            </button>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="qwick-view-left">
+                            <div class="quick-view-learg-img">
+                                <div class="quick-view-tab-content tab-content">
+                                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                        <img src="/static/assets/img/quick-view/l1.jpg" alt="">
+                                    </div>
+                                    <div class="tab-pane fade" id="modal2" role="tabpanel">
+                                        <img src="/static/assets/img/quick-view/l2.jpg" alt="">
+                                    </div>
+                                    <div class="tab-pane fade" id="modal3" role="tabpanel">
+                                        <img src="/static/assets/img/quick-view/l3.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quick-view-list nav" role="tablist">
+                                <a class="active" href="#modal1" data-toggle="tab">
+                                    <img src="/static/assets/img/quick-view/s1.jpg" alt="">
+                                </a>
+                                <a href="#modal2" data-toggle="tab" role="tab">
+                                    <img src="/static/assets/img/quick-view/s2.jpg" alt="">
+                                </a>
+                                <a href="#modal3" data-toggle="tab" role="tab">
+                                    <img src="/static/assets/img/quick-view/s3.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="qwick-view-right">
+                            <div class="qwick-view-content">
+                                <h3>Dog Calcium Food</h3>
+                                <div class="product-price">
+                                    <span class="new">&#8377;20.00 </span>
+                                    <span class="old">&#8377;50.00</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="icon-star theme-color"></i>
+                                    <i class="icon-star theme-color"></i>
+                                    <i class="icon-star theme-color"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do amt tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
+                                <div class="quick-view-select">
+                                    <div class="select-option-part">
+                                        <label>Size*</label>
+                                        <select class="select">
+                                            <option value="">- Please Select -</option>
+                                            <option value="">XS</option>
+                                            <option value="">S</option>
+                                            <option value="">M</option>
+                                            <option value=""> L</option>
+                                            <option value="">XL</option>
+                                            <option value="">XXL</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-option-part">
+                                        <label>Color*</label>
+                                        <select class="select">
+                                            <option value="">- Please Select -</option>
+                                            <option value="">orange</option>
+                                            <option value="">pink</option>
+                                            <option value="">yellow</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="quickview-plus-minus">
+                                    <div class="cart-plus-minus">
+                                        <input type="text" value="2" name="qtybutton" class="cart-plus-minus-box">
+                                    </div>
+                                    <div class="quickview-btn-cart">
+                                        <a class="btn-style" href="#">add to cart</a>
+                                    </div>
+
+                                    <div class="quickview-btn-wishlist">
+                                        <a class="btn-hover" href="#"><i class="ti-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         -->
+        
+        
+        <!-- all js here -->
+        <script src="/static/assets/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="/static/assets/js/popper.js"></script>
+        <script src="/static/assets/js/bootstrap.min.js"></script>
+        <script src="/static/assets/js/jquery.counterup.min.js"></script>
+        <script src="/static/assets/js/waypoints.min.js"></script>
+        <script src="/static/assets/js/elevetezoom.js"></script>
+        <script src="/static/assets/js/ajax-mail.js"></script>
+        <script src="/static/assets/js/owl.carousel.min.js"></script>
+        <script src="/static/assets/js/plugins.js"></script>
+        <script src="/static/assets/js/main.js"></script>
+    </body>
+</html>

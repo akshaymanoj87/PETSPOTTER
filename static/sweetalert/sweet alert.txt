@@ -1,0 +1,24 @@
+{% if error %}
+<script type="text/javascript">
+  swal("Error!", "{{error}}", "error");
+</script>
+{% endif %}
+
+{% if success %}
+<script type="text/javascript">
+  swal("Congrats!", "{{success}}", "success");
+</script>
+{% endif %}
+
+{% if info %}
+<script type="text/javascript">
+  swal("Information!", "{{info}}", "info");
+</script>
+{% endif %}
+
+
+
+
+
+return render(request,'add-products.html',{'data':data,'success':'Added Succesfully'})
+return render(request,'pooja-registration.html',{'error':'Email Already Exists'})

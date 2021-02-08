@@ -1,0 +1,116 @@
+{% extends 'pet-shop/headerfooter.html'%}
+{% block content %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+
+
+<div class="wrapper">
+
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1><br>
+        Update Food Details
+      </h1>
+   
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- SELECT2 EXAMPLE -->
+      <div class="box box-default">
+       <div style="{color: blue}">{{msg}}</div>
+
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+             {% for x in b %}
+            <form action="/shop_view_update_food/?id={{x.id}}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <label for="inputStatus">name</label>
+                  <input type="text" name="name" class="form-control"  value="{{x.name}}" placeholder="Name of Head" required=""> 
+              </div>
+
+
+            <div class="form-group">
+
+                <label for="inputStatus">Category</label>
+                  <input type="text" name="Category" class="form-control" value="{{x.Category}}" placeholder="shop name" required=""> 
+
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>quantity</label>
+                <input type="text" name="quantity"  value="{{x.quantity}}" class="form-control" required=""> 
+              </div>
+            
+            </div>
+             
+            <div class="col-md-12">
+      
+              <div class="form-group">
+                <label>Price</label>
+                 <input type="text" name="price"  pattern="{0-9}" value="{{x.Price}}" class="form-control" required=""> 
+              </div>          
+            </div>
+
+    
+
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Image</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do you want to update image:
+                    <input type="radio" name="imgupdate" value="Yes">Yes &nbsp;
+                    <input type="radio" name="imgupdate" value="No" checked>No &nbsp;
+                  <input type="file" name="image" value="{{x.Image.url}}" class="form-control">
+                   <img src="{{x.Image.url}}"width="100px" height="100px"> 
+              </div>
+              <!-- /.form-group -->
+              
+              <!-- /.form-group -->
+            </div>
+{% endfor %}
+             <div class="col-md-12">
+              <div class="box-footer" style="text-align: center;">
+                <button type="submit"  class="btn btn-success" class="btn btn-primary btn-block btn-flat">UPDATE</button>
+              </div>
+              <!-- /.form-group -->
+              
+              <!-- /.form-group -->
+            </div>
+           
+ </form>
+          </div>
+          <!-- /.row -->
+        </div>
+        
+      </div>
+      <!-- /.box -->
+
+      <div class="row">
+        <div class="col-md-6">
+
+         
+
+
+        </div>
+       
+      </div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
+

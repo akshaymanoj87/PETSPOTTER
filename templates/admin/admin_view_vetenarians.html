@@ -1,0 +1,103 @@
+{% extends 'admin/headerfooter.html'%}
+{% block content %}
+
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+ 
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+<!-- <link rel="stylesheet" type="text/css" href="/menubar/"> -->
+  <!-- Content Wrapper. Contains page content -->
+
+ <div class="content-wrapper">
+
+    <section class="content">
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Vetenerians</h3>
+{{data}}
+              <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+              <tr>
+                  <th>Name</th> 
+                  <th>Qualification</th>
+                  <th>Experience</th>
+                  <th>Address</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+              
+                </tr>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          
+              {% for x in db %}
+              <tr>
+          
+              <td>{{x.regid.name}}</td> 
+              <td>{{x.qualification}} </td>
+              <td>{{x.experience}} Year(s)</td>
+              <td>{{x.regid.address}}</td>
+              <td>{{x.regid.email}}</td>
+              <td>{{x.regid.phone}}</td>
+              <td>{{x.regid.status1}}</td>
+              <td><form action='/admin_view_approved_vetenery/?id={{x.regid.id}}' method='POST'>
+              {% csrf_token %}
+                <input type='submit' class="btn btn-success" value="Approve">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <form action='/admin_view_reject_vetenery/?id={{x.regid.id}}' method='POST'>
+              {% csrf_token %}
+                  <input type='submit' class="btn btn-success" value="Reject">
+             </td>
+             </tr>
+             {% endfor %}
+             {% for x in db1 %}
+              <tr>
+              <td>{{x.regid.name}}</td> 
+              <td>{{x.qualification}} </td>
+              <td>{{x.experience}} Year(s)</td>
+              <td>{{x.regid.address}}</td>
+              <td>{{x.regid.email}}</td>
+              <td>{{x.regid.phone}}</td>
+              <td>{{x.regid.status1}}</td>
+              <td> <form action='/admin_view_reject_vetenery/?id={{x.regid.id}}' method='POST'>
+              {% csrf_token %}
+                <input type='submit' class="btn btn-danger" value="Reject">
+             </tr>
+             {% endfor %}
+       {% for x in db2 %}
+              <tr>
+          
+              <td>{{x.regid.name}}</td>  
+              <td>{{x.qualification}}</td>
+              <td>{{x.experience}} Year(s)</td>
+              <td>{{x.regid.address}}</td>
+              <td>{{x.regid.email}}</td>
+              <td>{{x.regid.phone}}</td>
+              <td>{{x.regid.status1}}</td>
+             </tr>
+             {% endfor %}
+            
+          </table>
+        </div>    
+          </div>
+
+{% endblock %}
+
+

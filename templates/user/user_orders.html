@@ -1,0 +1,107 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>Cart Page</h2>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li class="active">Cart Page</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+         <!-- shopping-cart-area start -->
+        <div class="cart-main-area pt-95 pb-100">
+            <div class="container">
+                <h3 class="page-title">My Orders</h3>
+                <div class="row">
+                    <p style="color: red; text-align: center; ">{{msg}}</p>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive">
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Subtotal</th>
+                                            <th>Status</th>
+
+                                        </tr>
+                                    </thead>
+                                    {% for x in uv %}
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="{{x.pid.Image.url}}" width=130px height=100px alt=""></a>
+                                            </td>
+                                            <td class="product-name"><a href="#">{{x.pid.name}}</a></td>
+                                            <td class="product-price-cart"><span class="amount">&#8377;{{x.pid.Price}}</span></td>
+                                            <td class="product-quantity"><span class="amount">{{x.quantity}}</span></td>
+                                            <td class="product-subtotal" name="total">{{x.total}}</td>
+                                            <td class="product-remove">{{x.status}}</td>
+                                            <td>{% ifequal x.status "Delivered" %}
+<a href="/review/?pid={{x.pid.id}}&val=1&item=pet"><span class="fa fa-star checked"><input type="text" name="st" value="1" hidden></span>
+<a href="/review/?pid={{x.pid.id}}&val=2&item=pet"><span class="fa fa-star checked"></span>
+<a href="/review/?pid={{x.pid.id}}&val=3&item=pet"><span class="fa fa-star checked"></span>
+<a href="/review/?pid={{x.pid.id}}&val=4&item=pet"><span class="fa fa-star checked"></span>
+<a href="/review/?pid={{x.pid.id}}&val=5&item=pet"><span class="fa fa-star checked"></span>
+
+{% endifequal %}
+
+</td>
+                                        </tr>
+                                        
+                                       
+                                    </tbody>
+                                 {% endfor %}
+
+                                 {% for x in xy %}
+                                    <tbody>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="{{x.fid.Image.url}}" width=130px height=100px alt=""></a>
+                                            </td>
+                                            <td class="product-name">{{x.fid.name}}</a></td>
+                                            <td class="product-price-cart"><span class="amount">&#8377;{{x.fid.Price}}</span></td>
+                                            <td class="product-quantity"><span class="amount">{{x.quantity}}</span></td>
+                                            <td class="product-subtotal" name="total">{{x.total}}</td>
+                                            <td class="product-remove">{{x.status}}</td>
+                                            <td>{% ifequal x.status "Delivered" %}
+<a href="/review/?fid={{x.fid.id}}&val=1&item=food&cartid={{x.id}}" class="c"><span class="fa fa-star checked"></span>
+<a href="/review/?fid={{x.fid.id}}&val=2&item=food&cartid={{x.id}}" class="c"><span class="fa fa-star checked"></span>
+<a href="/review/?fid={{x.fid.id}}&val=3&item=food&cartid={{x.id}}" class="c"><span class="fa fa-star checked"></span>
+<a href="/review/?fid={{x.fid.id}}&val=4&item=food&cartid={{x.id}}" class="c"><span class="fa fa-star checked"></span>
+<a href="/review/?fid={{x.fid.id}}&val=5&item=food&cartid={{x.id}}" class="c"><span class="fa fa-star checked"></span>
+
+{% endifequal %}
+</td>
+
+                                        </tr>
+                                        {% endfor %}
+                                       
+                                    </tbody>
+                                    
+                                </table>
+                               
+                            </div>
+                           
+                        </form>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
+
+
+		{% endblock %}

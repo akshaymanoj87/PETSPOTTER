@@ -1,0 +1,69 @@
+{% extends 'user/headerfooter.html'%}
+{% block content %}
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/static/assets/img/banner/banner-3.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>Cart Page</h2>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li class="active">Cart Page</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+         <!-- shopping-cart-area start -->
+        <div class="cart-main-area pt-95 pb-100">
+            <div class="container">
+                <h3 class="page-title">My Payments</h3>
+                <div class="row">
+                    <p style="color: red; text-align: center; ">{{msg}}</p>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive">
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Order</th>
+                                           
+
+                                        </tr>
+                                    </thead>
+                                    {% for x in uv %}
+
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td class="product-price-cart">{{x.date}}</td>
+                                            <td class="product-quantity">&#8377; &nbsp;&nbsp;{{x.amount}}</td>
+                                            <td class="product-remove">{{x.status}}</td>
+                                        </tr>
+                                        
+                                       
+                                    </tbody>
+                                 {% endfor %}
+
+                                
+                                       
+                                    </tbody>
+                                    
+                                </table>
+                               
+                            </div>
+                           
+                        </form>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
+
+
+		{% endblock %}
